@@ -26,16 +26,16 @@ var previous_result='';
     console.error(error);
   } else 
   {
-    if((results[0].confidence<0.5)&&(previous_result !=results[0].label))
+    if((result[0].confidence<0.5)&&(previous_result !=result[0].label))
     {
       console.log(result);
-      previous_result=results[0].label;
+      previous_result=result[0].label;
       var synth = window.speechSynthesis;
-      speaking_data= "Object detected is: "+results[0].label;
+      speaking_data= "Object detected is: "+result[0].label;
       var utterThis = new SpeechSynthesisUtterance(speak_data);
       synth.speak(utterThis);
 
-      document.getElementById("result_object_name").innerHTML = results[0].label;
+      document.getElementById("result_object_name").innerHTML = result[0].label;
       document.getElementById("result_object_confidence").innerHMTL=  result[0].confidence.toFixed(3);
     }
 
